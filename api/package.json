@@ -8,5 +8,8 @@
   },
   "devDependencies": {
     "nitropack": "latest"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.13"
   }
 }
