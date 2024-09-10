@@ -1,9 +1,7 @@
-import { defineEventHandler, getQuery } from 'h3'
-// @ts-ignore
 import axios from 'axios';
 import xml2js from 'xml2js'
 import dayjs from 'dayjs'
-import { firestore, Office, upsertFromVideoId } from '~/utils'
+import { Office, upsertFromVideoId } from '~/controllers/firebase'
 
 export default defineEventHandler(async (event) => {
     const query = getQuery(event)

@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 // You'll need to implement or import these functions/types
-import { firestore, VideoStream, upsertFromVideoId } from '~/utils'
+import { VideoStream, upsertFromVideoId } from '~/controllers/firebase'
 
 export default defineEventHandler(async () => {
     try {
