@@ -1,7 +1,7 @@
-#Youtube Committee Videos
+# Youtube Committee Videos
 Polls YouTube Committee channels for upcoming, live, and completed video streams.
 
-###Development 
+### Development 
 Requires .env file placed inside the root directory with the following definitions:
 ```
 YOUTUBE_API_KEY
