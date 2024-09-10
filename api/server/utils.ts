@@ -1,22 +1,24 @@
-import { initializeApp } from 'firebase-admin/app';
+import { initializeApp, cert } from 'firebase-admin/app';
 import { getFirestore, Timestamp, FieldValue } from 'firebase-admin/firestore';
-import { getMessaging } from 'firebase-admin/messaging';
-import { getStorage } from 'firebase-admin/storage';
-import { getDatabase } from 'firebase-admin/database';
 import axios from 'axios';
 
-initializeApp({ projectId: process.env.FIREBASE_PROJECT_ID, databaseURL: process.env.FIREBASE_DATABASE_URL });
+const firebaseConfig = {
+    credential: cert({
+        projectId: process.env.FIREBASE_PROJECT_ID,
+        clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+        privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n')
+    }),
+};
+
+initializeApp(firebaseConfig);
 
 const firestore = getFirestore();
-const storage = getStorage();
-const messaging = getMessaging();
-const database = getDatabase();
 
 // ignore undefined properties in firestore.
 firestore.settings({ ignoreUndefinedProperties: true });
 
 export default firestore;
-export { Timestamp, FieldValue, storage, messaging, firestore, database };
+export { Timestamp, FieldValue, firestore };
 
 // Define your types
 export interface Office {
