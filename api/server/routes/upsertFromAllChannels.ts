@@ -10,7 +10,6 @@ export default defineEventHandler(async (event) => {
     const youtubeChannel = query.youtubeChannel as string | undefined
 
     try {
-        // @ts-ignore
         let offices = await firestore.collection('Offices').where('identifiers.youtubeChannel', '!=', null).get().then((snapshot: any[]) => {
             const offices: any[] = [];
             snapshot.forEach((doc) => {
@@ -23,7 +22,6 @@ export default defineEventHandler(async (event) => {
         });
 
         if (youtubeChannel) {
-            // @ts-ignore
             offices = offices.filter((o: { identifiers: { youtubeChannel: string; }; }) => o.identifiers.youtubeChannel === youtubeChannel);
         }
 
